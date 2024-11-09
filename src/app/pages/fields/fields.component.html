@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="card">
+    <h1 align="center">Crear canchas</h1>
+    <form [formGroup]="creationFieldForm">
+      <div class="form-control">
+        <label>Nombre</label>
+        <input type="text" formControlName="name">
+      </div>
+
+      <div class="form-control">
+        <label>Ubicación</label>
+        <input type="text" formControlName="location">
+      </div>
+
+      <div class="form-control">
+        <label>Superficie</label>
+
+        <select name="surface" formControlName="surface">
+          <option value="grama_sintetica">Grama sintética</option>
+          <option value="grama_natural">Grama natural</option>
+          <option value="cemento">Cemento</option>
+          <option value="otra">Otra</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label>Precio por hora</label>
+        <input type="text" formControlName="price_per_hour">
+      </div>
+
+      <div class="form-control-horizontal">
+        <label>Está disponible:</label>
+        <input type="radio" id="true" value="true" [checked]="creationFieldForm.get('is_available')?.value === 'true'" formControlName="is_available">
+        <label for="true">Sí</label><br>
+        <input type="radio" id="false" value="false" [checked]="creationFieldForm.get('is_available')?.value === 'false'" formControlName="is_available">
+        <label for="false">No</label><br>
+      </div>
+
+      <div class="form-control">
+        <button (click)="createField()">Crear</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>
