@@ -25,7 +25,7 @@
 
       <div class="form-control">
         <label>Precio por hora</label>
-        <input type="text" formControlName="price_per_hour">
+        <input type="number" formControlName="price_per_hour">
       </div>
 
       <div class="form-control-horizontal">
@@ -40,7 +40,37 @@
         <button (click)="createField()">Crear</button>
       </div>
 
+      <div>
+        <label *ngIf="errorMessage">{{errorMessage}}</label>
+      </div>
     </form>
+  </div>
+
+  <div class="card card-table">
+    <h1 align="center">Listado de canchas</h1>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Ubicación</th>
+        <th>Superficie</th>
+        <th>Precio por hora</th>
+        <th>Disponibilidad</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let field of fieldsList">
+        <td>{{ field.id }}</td>
+        <td>{{ field.name }}</td>
+        <td>{{ field.location }}</td>
+        <td>{{ field.surface }}</td>
+        <td>{{ field.price_per_hour }}</td>
+        <td>{{ field.is_available === 'true' ? 'Sí' : 'No' }}</td>
+        <td><button (click)="deleteField(field.id)">Borrar</button></td>
+      </tr>
+    </table>
+    <div>
+      <label *ngIf="successMessage">{{successMessage}}</label>
+    </div>
   </div>
 
 </div>
